@@ -74,7 +74,28 @@
     </footer>
 
     <!-- Script pour l'envoi vers WhatsApp -->
-    <
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Empêche l'envoi classique du formulaire
+
+            // Récupération des valeurs des champs
+            const nom = document.getElementById('nom').value.trim();
+            const objectif = document.getElementById('objectif').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            // Construction du message à envoyer (avec retours à la ligne)
+            const texteMessage = `Nom et Post-nom: ${nom}\nObjectif: ${objectif}\nMessage: ${message}`;
+
+            // URL de base fournie (lien direct vers mon WhatsApp)
+            const baseURL = 'https://wa.me/message/MSHTVRUQNCWBK1';
+
+            // Création de l'URL complète avec le texte encodé
+            const url = baseURL + '?text=' + encodeURIComponent(texteMessage);
+
+            // Ouverture dans un nouvel onglet
+            window.open(url, '_blank');
+        });
+    </script>
 
 </body>
 </html>
